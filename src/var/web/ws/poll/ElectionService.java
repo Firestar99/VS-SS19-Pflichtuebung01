@@ -6,19 +6,16 @@ import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
 
 @ServerEndpoint(value = "/election", encoders = DataEncoder.class)
-public class ElectionService extends Endpoint {
+public class ElectionService {
 	
 	private Session session;
 	
-	public void notify(BallotBox ballotBox) throws EncodeException {
-		try {
-			session.getBasicRemote().sendObject(ballotBox);
-		} catch (IOException e) {
-			e.printStackTrace(System.err);
-		}
+	public void notify(BallotBox zwischenstand) throws IOException, EncodeException {
+		if (session.isOpen())
+			session.getBasicRemote().sendObject(zwischenstand);
 	}
 	
-	@Override
+	@OnOpen
 	public void onOpen(Session session, EndpointConfig config) {
 		this.session = session;
 		BallotBox ballotBox = BallotBox.getInstance();
@@ -26,12 +23,12 @@ public class ElectionService extends Endpoint {
 		
 		try {
 			notify(ballotBox);
-		} catch (EncodeException e) {
+		} catch (EncodeException | IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	@Override
+	@OnClose
 	public void onClose(Session session, CloseReason closeReason) {
 		BallotBox.getInstance().removeObserver(this);
 	}
