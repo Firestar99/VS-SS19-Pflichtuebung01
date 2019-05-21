@@ -7,6 +7,10 @@
         <element id="directory" name="classes">
           <element id="module-output" name="pflichtuebung01" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="javax.json:javax.json-api:1.1.2" />
+          <element id="library" level="project" name="org.glassfish:javax.json:1.0.2" />
+        </element>
       </element>
     </root>
   </artifact>

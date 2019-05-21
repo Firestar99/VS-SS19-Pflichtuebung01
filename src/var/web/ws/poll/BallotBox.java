@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import javax.websocket.EncodeException;
+
 public class BallotBox {
 	private final Map<String, Integer> votes = new HashMap<>();
 	private final Set<ElectionService> observers = new HashSet<>();

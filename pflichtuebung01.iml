@@ -89,7 +89,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Tomcat 9.0.201" level="application_server_libraries" />
+    <orderEntry type="library" name="Tomcat 9.0.20" level="application_server_libraries" />
     <orderEntry type="library" name="javax.servlet:javax.servlet-api:4.0.1" level="project" />
+    <orderEntry type="library" name="javax.json:javax.json-api:1.1.2" level="project" />
+    <orderEntry type="library" name="javax.websocket:javax.websocket-api:1.1" level="project" />
+    <orderEntry type="library" name="org.glassfish:javax.json:1.0.2" level="project" />
   </component>
 </module>
